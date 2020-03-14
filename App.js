@@ -1,5 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Input, Button } from 'react-native-elements';
+
+// ESTILOS
+import MyStyles from './myStyles'
 
 /*export default function App() {
   return (
@@ -12,12 +16,36 @@ import { StyleSheet, Text, View } from 'react-native';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state={
+      texto: 'TAREA',
+    }
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text>Now component is stateful</Text>
+        <View style={MyStyles.header}>
+          <Text>My 1st app</Text>
+          <Input placeholder="To Do"></Input>
+          <Button title="+" onPress={ () => {this.setState({texto: 'Otra tarea'}) } }></Button>
+        </View>
+
+        <Text>{this.state.texto}</Text>
+
+        <View style={MyStyles.myButtonMargin} >
+          <Button
+            raised
+            titleStyle={MyStyles.customTitle}
+            type="outline"
+            title="My btn"
+            />
+        </View>
+        {/* <View style={[
+          MyStyles.buttonStyle,
+          {borderColor: 'red', borderWidth: 5}
+          ]}>
+          <Button title='btn1'/>
+        </View> */}
       </View>
     );
   }
@@ -26,8 +54,11 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#e1e1e1',
+    // alignItems: 'center',
+    alignItems: 'stretch',
+    // justifyContent: 'space-between',
+    justifyContent: 'flex-start',
+    // width: '80%'
   },
 });
