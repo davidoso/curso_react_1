@@ -7,17 +7,7 @@ export default StyleSheet.create({
         marginVertical: 25,
         marginHorizontal: 50,
         // backgroundColor: 'black',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        borderWidth: 2,
     },
-    customTitle: {
-        color: 'red'
-    },
-    header: {
-        flex: 0.3,
-        flexDirection: 'row',
-        // justifyContent: 'space-between',
-        justifyContent: 'flex-start',
-        borderBottomWidth: 1,
-        marginVertical: 30
-    }
-  });
+});
