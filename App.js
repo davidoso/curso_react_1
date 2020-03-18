@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Input, Button } from 'react-native-elements';
-
-// ESTILOS
+// CUSTOM STYLES
 import MyStyles from './myStyles'
 
 /*export default function App() {
@@ -24,28 +23,28 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={MyStyles.header}>
-          <Text>My 1st app</Text>
-          <Input placeholder="To Do"></Input>
-          <Button title="+" onPress={ () => {this.setState({texto: 'Otra tarea'}) } }></Button>
+        <View style={styles.header}>
+          <Text style={{ alignSelf: 'center'}}>To-Do App</Text>
+          <Input placeholder='Type task here'></Input>
+          <View style={MyStyles.myButtonMargin} >
+            <Button
+              title='+'
+              type='outline'
+              onPress={ () => {this.setState({texto: 'Otra tarea'}); } }>
+            </Button>
+          </View>
         </View>
 
-        <Text>{this.state.texto}</Text>
+        <Text style={{ alignSelf: 'center'}}>{this.state.texto}</Text>
 
         <View style={MyStyles.myButtonMargin} >
           <Button
             raised
-            titleStyle={MyStyles.customTitle}
-            type="outline"
-            title="My btn"
+            titleStyle={styles.customTitle}
+            type='outline'
+            title='Add'
             />
         </View>
-        {/* <View style={[
-          MyStyles.buttonStyle,
-          {borderColor: 'red', borderWidth: 5}
-          ]}>
-          <Button title='btn1'/>
-        </View> */}
       </View>
     );
   }
@@ -58,7 +57,16 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     alignItems: 'stretch',
     // justifyContent: 'space-between',
-    justifyContent: 'flex-start',
-    // width: '80%'
+    justifyContent: 'flex-start'
+  },
+  customTitle: {
+    color: '#333'
+  },
+  header: {
+      // flex: 0.3,
+      // flexDirection: 'row',
+      justifyContent: 'flex-start',
+      borderBottomWidth: 1,
+      marginVertical: 30
   },
 });
