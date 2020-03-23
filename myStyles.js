@@ -3,10 +3,9 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     myButtonMargin: {
         width: 120,
-        // height: 50,
         marginVertical: 25,
         marginHorizontal: 50,
-        // backgroundColor: 'black',
+        color: '#333',
         alignSelf: 'center',
         borderWidth: 2,
     },
