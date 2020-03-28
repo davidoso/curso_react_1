@@ -2,6 +2,11 @@ import React from 'react';
 import { StyleSheet, ScrollView, Text, View, Alert, KeyboardAvoidingView } from 'react-native';
 import { Button, Input, ListItem, Icon } from 'react-native-elements';
 
+// CUSTOM COMPONENTS
+import Header from './components/Header';
+import Tarea from './components/Tarea';
+
+
 // CUSTOM STYLES
 import MyStyles from './myStyles'
 
@@ -79,46 +84,23 @@ export default class App extends React.Component {
     );
   }
 
+  getTasks = () => {
+    letlistaTareas = this.state.tareas.map(
+      tarea => <Tarea key={this.tarea.id} id={this.tarea.id} nombre={this.tarea.nombre} deleteTask={this.deleteTask}/>
+    );
+    return(<View>{listaTareas}</View>)
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-          <Text style={{ alignSelf: 'center'}}>To-Do App</Text>
-          <Input placeholder='Type task here' onChangeText={ (text) => this.setCurrentTask(text) }></Input>
-          <View style={MyStyles.myButtonMargin} >
-            <Button
-              title='+'
-              type='outline'
-              // onPress={ () => {this.setState({texto: 'Otra tarea'}); } }>
-              onPress={ this.addTask }>
-            </Button>
-          </View>
-        </View>
-
+        <Header texto={this.props.text} addTask={this.addTask} setCurrentTask={this.setCurrentTask}/>
         <KeyboardAvoidingView behavior="height" enabled style={styles.container}>
           <ScrollView
             ref={ref => this.scrollView = ref}
             onContentSizeChange={() => this.scrollView.scrollToEnd({animated: true})}
           >
-          {this.state.tareas.map((tarea) => {
-            return(
-              <ListItem
-                key={tarea.id}
-                title={tarea.nombre}
-                rightIcon={
-                  <Icon
-                    raised
-                    reverse
-                    name='trash'
-                    type='font-awesome'
-                    color='red'
-                    onPress={ () => this.deleteTask(tarea.id) }
-                  />
-                }
-                style={{borderBottomWidth: 1, borderColor: "#EFEFEF"}}
-              />
-            );
-          })}
+            {this.getTasks()}
           </ScrollView>
 
           <View style={styles.myButtonMargin}>
